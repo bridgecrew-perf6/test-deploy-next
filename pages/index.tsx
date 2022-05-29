@@ -31,13 +31,23 @@ function Home(props: PropTypes) {
   )
 }
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
+//   const res = await fetch(`https://tano-api.herokuapp.com/products`);
+//   const products = await res.json()
+//   return {
+//     props: {
+//       products
+//     }
+//   }
+// }
+
+export async function getStaticProps() {
   const res = await fetch(`https://tano-api.herokuapp.com/products`);
   const products = await res.json()
   return {
     props: {
       products
-    }
+    },
   }
 }
 
