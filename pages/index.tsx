@@ -26,7 +26,9 @@ function Home(props: PropTypes) {
           {products.map((pro: any, index: number) => {
             return (
               <li key={index}>
-                <Link href={`/static-path/${pro.Id}`}>{pro.Title}</Link>
+                <Link href={`/static-path/${pro.Id}`}>
+                  <p>{index} - {pro.Title}</p>
+                </Link>
               </li>
             )
           })}

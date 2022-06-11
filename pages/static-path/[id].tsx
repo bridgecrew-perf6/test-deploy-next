@@ -25,11 +25,11 @@ function UserDetail({post}: any) {
 
 
 export async function getStaticPaths() {
-    const res = await fetch(`https://hhq.somee.com/api/News?offSet=0&pageSize=0`);
+    const res = await fetch(`https://hhq.somee.com/api/News?offSet=0&pageSize=5`);
     const paths: any = (await res.json()).Data.Data.map((item: any) => ({params: {id: item.Id}}));
     return {
       paths,
-      fallback: false
+      fallback: true
     }
 }
 
