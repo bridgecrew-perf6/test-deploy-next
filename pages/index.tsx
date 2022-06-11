@@ -21,7 +21,7 @@ function Home(props: PropTypes) {
           {products.map((pro: any, index: number) => {
             return (
               <li key={index}>
-                {pro.name}
+                {pro.Title}
               </li>
             )
           })}
@@ -42,8 +42,10 @@ function Home(props: PropTypes) {
 // }
 
 export async function getStaticProps() {
-  const res = await fetch(`https://tano-api.herokuapp.com/products`);
-  const products = await res.json()
+  const res = await fetch(`https://hhq.somee.com/api/News?offSet=0&pageSize=0`);
+  console.log('Abc:', res);
+  console.log('________________________________________________', new Date());
+  const products = (await res.json()).Data.Data;
   return {
     props: {
       products
