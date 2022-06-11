@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 
 interface PropTypes {
@@ -21,7 +22,7 @@ function Home(props: PropTypes) {
           {products.map((pro: any, index: number) => {
             return (
               <li key={index}>
-                {pro.Title}
+                <Link href={`/user/${pro.Id}`}>{pro.Title}</Link>
               </li>
             )
           })}
@@ -41,10 +42,8 @@ function Home(props: PropTypes) {
 //   }
 // }
 
-export async function getStaticProps() {
+export async function getStaticProps({params}: any) {
   const res = await fetch(`https://hhq.somee.com/api/News?offSet=0&pageSize=0`);
-  console.log('Abc:', res);
-  console.log('________________________________________________', new Date());
   const products = (await res.json()).Data.Data;
   return {
     props: {
